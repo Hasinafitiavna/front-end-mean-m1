@@ -1,0 +1,40 @@
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <section class="content">
+      <div class="container-fluid">
+
+        <h1>Liste Produit</h1>
+        <div id="chat-applicaton">
+          <h2>Chat Application - Angular client</h2>
+          <div id="chat-window">
+            <div id="output" *ngFor="let data of output">
+                <p><strong>{{data.handle}} : </strong>{{data.message}}</p>
+            </div>
+            <div id="feedback"><p>{{feedback}}</p></div>
+          </div>
+          <input id="handle" type="text" [(ngModel)]="userName" placeholder="Handle" />
+          <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
+            (keypress)="messageTyping()" />
+          <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
+      </div>
+        
+      </div>
+    </section>
+  </div>

@@ -1,0 +1,69 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+
+      <div class="card">
+
+        <div class="card-header d-flex justify-content-between">
+          <h3 class="card-title">Liste des offres speciale</h3>
+          <a class="btn btn-success ml-auto" routerLink="../ajouter">Ajouter [+]</a>
+        </div>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+          <p *ngIf="messageSucces != null" style="color: green"> {{messageSucces}} </p>
+          <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" id="listeOffreSpecialeTable" class="table table-bordered table-striped">
+            <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Date de debut</th>
+              <th>Date de fin</th>
+              <th>Offre</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of offreSpeciales">
+              <td>{{item.nom}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.date_debut}}</td>
+              <td>{{item.date_fin}}</td>
+              <td>
+                <ng-container *ngFor="let service of item.liste_service; let i = index">
+                  <p>{{service.nom}} : {{item.liste_reduction}} %</p>
+                </ng-container>
+              </td>
+              <td style="width: 18%">
+                <button (click)="redirectModification(item._id)" class="btn ml-auto"><i class="fas fa-edit"></i></button> |
+                <button (click)="supprimerOffreSpeciale(item._id)" class="btn ml-auto"><i class="fas fa-trash-alt" style="color: red"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.card-body -->
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- Main content -->

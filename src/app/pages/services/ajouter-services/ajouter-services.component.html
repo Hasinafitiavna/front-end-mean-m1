@@ -1,0 +1,73 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard v1</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Ajouter un nouveau service</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+
+          <form novalidate #f="ngForm" (ngSubmit)="f.form.valid && ajouterService()">
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Nom</label>
+                  <input type="text" name="nom" class="form-control" ngModel required [(ngModel)]="nouveauService.nom" #nom="ngModel">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Prix</label>
+                  <input type="number" step="0.01" name="prix" class="form-control" ngModel required [(ngModel)]="nouveauService.prix" #prix="ngModel">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>Durée</label>
+                  <input type="number" step="0.01" name="duree" class="form-control" ngModel required [(ngModel)]="nouveauService.duree" #duree="ngModel">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Commission</label>
+                  <input type="number" step="0.01" name="commission" class="form-control" ngModel required [(ngModel)]="nouveauService.commission" #commission="ngModel">
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <app-drag-and-drop (fileUploaded)="handleFileUpload($event)" *ngIf="!nouveauService.image"></app-drag-and-drop>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+          </form>
+        </div>
+        <!-- /.card-body -->
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- Main content -->
